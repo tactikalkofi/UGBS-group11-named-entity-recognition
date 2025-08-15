@@ -448,23 +448,13 @@ def page_predict(model_name: str, model_obj):
         st.markdown("#### Token-level output")
         st.dataframe(pd.DataFrame({"Token": tokens, "Pred": y_pred}))
 
-def page_about():
-    st.markdown("### About")
-    st.write("""
-This app demonstrates token-level NER using **Flair** Transformer embeddings.
-Upload a CoNLL-style CSV (columns: `Sentence #`, `Word`, `POS`, `Tag`), embed tokens,
-and train simple classifiers (**Logistic Regression** and **Random Forest**) to compare performance.
-    """)
-    st.markdown("<span class='badge'>BIO tags (B-/I-) • Entity types: PER/ORG/GPE/…</span>", unsafe_allow_html=True)
-    st.markdown("<hr/>", unsafe_allow_html=True)
-    st.caption("For production NER, prefer a sequence tagger (CRF/BiLSTM/Transformer) trained end-to-end.")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
 def main():
     st.sidebar.title("Navigation")
-    page = st.sidebar.selectbox("Go to", ["Dataset", "Preprocessing", "Train & Evaluate", "Predict", "About"])
+    page = st.sidebar.selectbox("Go to", ["Dataset", "Preprocessing", "Train & Evaluate", "Predict"])
 
     st.sidebar.title("Settings")
     use_uploaded = st.sidebar.checkbox("Use uploaded CSV", value=False)
